@@ -80,23 +80,24 @@ L’assistant utilise l’outil **Code Interpreter** et des scripts Python déte
 
 ```
 .
-├── README.md                # Version anglaise
-├── README_fr.md             # Version française (ce fichier)
+├── README.md # Version anglaise
+├── README_fr.md # Version française (ce fichier)
 ├── Workflow_Agent/
-│   ├── browser_chatbot.png
-│   ├── Google_Sheet.png
-│   ├── meteo_report.png
-│   ├── n8n.htm
-│   ├── System_prompt.txt
-│   ├── Workflow_agent.json
-│   └── Workflow.png
+│ ├── browser_chatbot.png # Capture d’écran du chatbot navigateur
+│ ├── Google_Sheet.png # Données enregistrées dans Google Sheets
+│ ├── meteo_report.png # Exemple de bulletin météo envoyé par email
+│ ├── n8n.htm # Interface HTML/JS du chatbot
+│ ├── System_prompt.txt # Prompt système du nœud Agent IA
+│ ├── Workflow_agent.json # Blueprint du workflow (pour reproduction dans n8n)
+│ └── Workflow.png # Capture d’écran du workflow dans n8n
 └── Workflow_Assistant/
-    ├── Demo_calculs.md
-    ├── System_prompt.txt
-    ├── Workflow_assistant.json
-    ├── Workflow.png
-    ├── humidex_calc_simple.py
-    └── windchill_calc_simple.py
+├── Demo_calculs.md # Exemple de conversation (questions/réponses météo)
+├── System_prompt.txt # Prompt système du nœud “Message an Assistant”
+├── Workflow_assistant.json # Blueprint du workflow (pour reproduction dans n8n)
+├── Workflow.png # Capture d’écran du workflow dans n8n
+├── humidex_calc_simple.py # Calcul déterministe de l’humidex (Python)
+└── windchill_calc_simple.py # Calcul déterministe du windchill (Python)
+
 ```
 
 ---
