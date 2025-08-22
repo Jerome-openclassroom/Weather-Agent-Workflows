@@ -24,7 +24,7 @@
           "parameters": [
             {
               "name": "key",
-              "value": "98adae444b4947a3a4e91950250905"
+              "value": "CLE_API_WeatherAPI"
             },
             {
               "name": "q",
@@ -50,7 +50,7 @@
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "427a3f87-d896-4d54-955f-4896889013b4",
+        "path": "LE_CHIEN!",
         "responseMode": "lastNode",
         "options": {}
       },
@@ -62,7 +62,7 @@
       ],
       "id": "4a130a82-906d-4660-8d07-db652ea59459",
       "name": "Webhook",
-      "webhookId": "427a3f87-d896-4d54-955f-4896889013b4"
+      "webhookId": "My_WebHook_ID"
     },
     {
       "parameters": {
