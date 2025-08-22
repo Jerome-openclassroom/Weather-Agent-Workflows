@@ -110,8 +110,8 @@ The Assistant uses the **Code Interpreter tool** and deterministic Python script
 
 This repository illustrates the difference between two approaches to agent design in n8n:
 
-- **AI Agent Node** → flexible but can be unstable and non-deterministic in extreme use case, but suitable for a very large majority of office tasks.  
-- **Assistant with Code Interpreter** → deterministic, explainable, and better suited for tasks requiring reproducibility and precision (science for ex).  
+- **AI Agent Node → flexible and well-suited for most office automation tasks (including advanced use cases), but can be unstable and non-deterministic in extreme scenarios.
+- **Assistant with Code Interpreter → deterministic and explainable, better suited for scientific or reproducibility-critical workflows.
 
 Both are *agents by definition* (they combine memory, tools, and reasoning), even if only one is explicitly called an "Agent" in n8n.
 
