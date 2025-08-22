@@ -109,7 +109,7 @@ The Assistant uses the **Code Interpreter tool** and deterministic Python script
 
 The critical factor is not the **agent type** but the **calculation method**:
 
-- For **90% of office automation and public-facing scenarios** (tourism, outdoor activities, weather services), approximate results computed with model weights are acceptable. Small deviations (e.g., Humidex 41.0°C instead of 41.2°C, or Windchill –3.2°C instead of –3.5°C) have **no practical impact**.  
+- For **90% of office automation and public-facing scenarios** (tourism, outdoor activities, current weather advisory services), approximate results computed with model weights are acceptable. Small deviations (e.g., Humidex 41.0°C instead of 41.2°C, or Windchill –3.2°C instead of –3.5°C) have **no practical impact**.  
 
 - For **critical scientific, medical, or industrial contexts**, such as calculating an **IV drug dosage with a narrow therapeutic window**, results obtained with model weights are **unsafe**. In such cases, deterministic and traceable calculations (e.g., via Python scripts in the Code Interpreter) are **mandatory**.  
 
