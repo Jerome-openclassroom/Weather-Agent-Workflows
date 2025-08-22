@@ -24,7 +24,7 @@
           "parameters": [
             {
               "name": "key",
-              "value": "98adae444b4947a3a4e91950250905"
+              "value": "My_WeatherAPI_Key"
             },
             {
               "name": "q",
@@ -50,7 +50,7 @@
     {
       "parameters": {
         "httpMethod": "POST",
-        "path": "b8b6679e-b0c1-475c-a135-1ee26aba0b8c",
+        "path": "The_DOG!",
         "responseMode": "lastNode",
         "options": {}
       },
@@ -62,7 +62,7 @@
       ],
       "id": "cd0eaa0f-5d68-41ef-9fda-c6d7dc0613ec",
       "name": "Webhook",
-      "webhookId": "b8b6679e-b0c1-475c-a135-1ee26aba0b8c"
+      "webhookId": "My_WebHook_ID"
     },
     {
       "parameters": {
