@@ -36,7 +36,7 @@ The Agent is guided with a **system prompt** and maintains a short-term memory.
 
 ### Limitations
 - The AI Agent node sometimes **ignores instructions** and performs calculations directly instead of using deterministic formulas.
-- JSON outputs may be inconsistent and difficult to map.
+- JSON outputs may be inconsistent and difficult to map. As a result, using Code nodes becomes much more complex, which often justifies letting the model perform the calculations with its weights.
 - Windchill and Humidex are **not guaranteed deterministic** in this workflow.
 
 ### Files (Workflow_Agent/)
