@@ -61,7 +61,7 @@ L’assistant utilise l’outil **Code Interpreter** et des scripts Python déte
   - `humidex_calc_simple.py`  
   - `windchill_calc_simple.py`  
 - L’assistant récupère les données depuis Google Sheets et Weather API.  
-- Les réponses incluent **les étapes de calcul détaillées** avec les variables utilisées.  
+- Les réponses peuvent inclure **les étapes de calcul détaillées** avec les variables utilisées.  
 - Sorties JSON stables, directement exploitables dans n8n.  
 - Conversations de démonstration incluses (`Demo_calculs.md`).  
 
