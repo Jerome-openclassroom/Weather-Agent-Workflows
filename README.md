@@ -12,7 +12,7 @@ Includes deterministic **Humidex** and **Windchill** calculations, **Google Shee
 
 Each section below is structured as a standalone README-style description.
 
-⚠️ API keys and webhook URLs have been removed for security reasons. Please replace them with your own values in order to reproduce the workflows.
+> ⚠️ API keys and webhook URLs have been removed for security reasons. Please replace them with your own values in order to reproduce the workflows.
 
 ---
 
