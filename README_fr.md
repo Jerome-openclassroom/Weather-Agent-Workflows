@@ -110,8 +110,8 @@ L’assistant utilise l’outil **Code Interpreter** et des scripts Python déte
 
 Ce dépôt illustre la différence entre deux approches de conception d’agents dans n8n :  
 
-- **Nœud Agent IA** → flexible mais éventuellement instable et non déterministe dans les situations très exigeantes.  
-- **Assistant avec Code Interpreter** → déterministe, explicable, mieux adapté aux cas nécessitant une reproductibilité.  
+- **Nœud Agent IA** → flexible mais éventuellement instable et non déterministe dans les situations très exigeantes, adapté à l'automatisation de l'extrême majorité des tâches bueautiques.  
+- **Assistant avec Code Interpreter** → déterministe, explicable, mieux adapté aux cas nécessitant une reproductibilité parfaite (sciences, médecine...).  
 
 Les deux sont **des agents par définition** (mémoire, outils, raisonnement), même si un seul est nommé explicitement “Agent” dans n8n.  
 
