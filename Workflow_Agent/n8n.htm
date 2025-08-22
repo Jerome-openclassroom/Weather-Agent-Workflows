@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Agent IA (n8n)</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+    #chat { border: 1px solid #ccc; padding: 10px; height: 400px; overflow-y: auto; }
+    .msg { margin: 5px 0; padding: 5px 10px; border-radius: 8px; }
+    .user { background: #e6f7ff; text-align: right; }
+    .bot  { background: #f6f6f6; text-align: left; }
+    #input { width: 80%; padding: 8px; }
+    #send { padding: 8px 12px; }
+  </style>
+</head>
+<body>
+  <h2>Agent IA (n8n)</h2>
+  <div id="chat"></div>
+  <input id="input" type="text" placeholder="Écrivez votre message..." onkeypress="if(event.key==='Enter'){send();}">
+  <button id="send" onclick="send()">Envoyer</button>
+
+<script>
+const WEBHOOK = "https://jeromex1.app.n8n.cloud/webhook/427a3f87-d896-4d54-955f-4896889013b4"; 
+// ⚠️ Mets l’URL prod si ton workflow est activé.
+
+// Générer un ID de session (aléatoire simple)
+// au lieu de "sess-" + ...
+const sessionId = "sess" + Math.random().toString(36).slice(2);
+
+
+function appendMessage(text, cls) {
+  const div = document.createElement("div");
+  div.className = "msg " + cls;
+  div.innerText = text;
+  document.getElementById("chat").appendChild(div);
+  document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+}
+
+async function send() {
+  const input = document.getElementById("input");
+  const msg = input.value.trim();
+  if(!msg) return;
+  appendMessage(msg, "user");
+  input.value = "";
+
+  try {
+    const r = await fetch(WEBHOOK, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        sessionId: sessionId,
+        message: msg 
+      })
+    });
+    const data = await r.json();
+    appendMessage(data.reply || JSON.stringify(data), "bot");
+  } catch (e) {
+    appendMessage("⚠️ Erreur de connexion au webhook", "bot");
+  }
+}
+</script>
+</body>
+</html>

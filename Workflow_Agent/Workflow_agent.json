@@ -1,0 +1,441 @@
+{
+  "name": "Agent_IA_Météo_v4",
+  "nodes": [
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook').item.json.body.sessionId }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -528,
+        144
+      ],
+      "id": "e84ac62e-a041-4922-95ff-e40f4a11c343",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "url": "http://api.weatherapi.com/v1/current.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "key",
+              "value": "98adae444b4947a3a4e91950250905"
+            },
+            {
+              "name": "q",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters1_Value', ``, 'string') }}"
+            },
+            {
+              "name": "aqi",
+              "value": "no"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.2,
+      "position": [
+        256,
+        144
+      ],
+      "id": "526b08d2-268e-4a46-9241-512e0cc19a7f",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "427a3f87-d896-4d54-955f-4896889013b4",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -624,
+        -96
+      ],
+      "id": "4a130a82-906d-4660-8d07-db652ea59459",
+      "name": "Webhook",
+      "webhookId": "427a3f87-d896-4d54-955f-4896889013b4"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -816,
+        144
+      ],
+      "id": "74fb34e3-6b51-4239-a84b-999cf341614e",
+      "name": "Moteur_LLM_ici_GPT4_mini",
+      "credentials": {
+        "openAiApi": {
+          "id": "NoZ9aJ2jaS1NHCrC",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "138McEye87dtczioB03L4CkoxVqi5q9uo_A4170HPpXc",
+          "mode": "list",
+          "cachedResultName": "Observation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/138McEye87dtczioB03L4CkoxVqi5q9uo_A4170HPpXc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Feuille 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/138McEye87dtczioB03L4CkoxVqi5q9uo_A4170HPpXc/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -352,
+        144
+      ],
+      "id": "66c7631c-e3e8-4f84-81d9-1dd1f76bc6ea",
+      "name": "Get_row ",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "31LaukvmbfzpoFVr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "138McEye87dtczioB03L4CkoxVqi5q9uo_A4170HPpXc",
+          "mode": "list",
+          "cachedResultName": "Observation",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/138McEye87dtczioB03L4CkoxVqi5q9uo_A4170HPpXc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Feuille 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/138McEye87dtczioB03L4CkoxVqi5q9uo_A4170HPpXc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Date', `Le champ Date correspond à la valeur de localtime, par exemple \"localtime\": \"2025-08-21 13:57\" la date est 21/08/2025`, 'string') }}",
+            "Lieu": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Lieu', ``, 'string') }}",
+            "Température": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Temp_rature', `Le champ Température correspond à la valeur de temp_c, par exemple \"temp_c\": 19.3 signifie une Température de 19.3°C`, 'string') }}",
+            "Ciel ": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Ciel_', `correspond à la valeur de cloud, par exemple \"cloud\": 75 signifie un ciel couvert à 75%`, 'string') }}",
+            "UV": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('UV', `il s'agit ici de l'indice UV`, 'string') }}",
+            "Humidité_relative": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Humidit__relative', `correspond à la valeur de humidity, par exemple \"humidity\": 52 signifie une Humidité_relative de 52%`, 'string') }}",
+            "Pression": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Pression', `correspond à la valeur de pressure_mb, par exemple\"pressure_mb\": 1018.0 signifie une pression de 1018.0 hPa`, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lieu",
+              "displayName": "Lieu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Température",
+              "displayName": "Température",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "UV",
+              "displayName": "UV",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Humidité_relative",
+              "displayName": "Humidité_relative",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Pression",
+              "displayName": "Pression",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Ciel ",
+              "displayName": "Ciel ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -208,
+        144
+      ],
+      "id": "5c0f065b-090a-43d5-b2c1-17d6b65c9dd9",
+      "name": "Append_row ",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "31LaukvmbfzpoFVr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "emailType": "text",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        -64,
+        144
+      ],
+      "id": "44a0c4c9-d989-4216-ab19-fafd552f7ae8",
+      "name": "Envoyer_un_Mail",
+      "webhookId": "e4c2800a-de46-43eb-bb6a-b6c6f05db086",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1p5L8t0Ti7Odu8ke",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code node (JavaScript)\nreturn [\n  {\n    json: {\n      reply: $json.output   // remplace \"output\" par \"reply\"\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        144,
+        -96
+      ],
+      "id": "9726731d-21fc-4744-a15d-94310901f28d",
+      "name": "Parsing"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.message }}",
+        "options": {
+          "systemMessage": "Tu es un agent IA intégré dans n8n.\nTu dois toujours produire une réponse, même si aucune action n’est nécessaire.\nL'historique de l'échange se trouve dans le node Simple memory. \n\nTu peux :\n- Répondre à des questions générales avec tes connaissances,\n- Donner la météo actuelle dans une ville,\n- Enregistrer les informations météo dans un tableau Google Sheets (Date, Lieu, Température, Ciel, UV, Humidité relative, Pression).\n\nRègles pour la météo (WeatherAPI) :\n- Si l’utilisateur demande la météo, utilise l’outil WeatherAPI.\n- Extrait le nom de la ville mentionnée dans la question (exemples : Paris, Lyon, Marseille).\n- Renseigne la variable \"city\" avec ce nom.\n- N’utilise l’outil WeatherAPI que si une ville est mentionnée ou sous-entendue.\n- Reformule la réponse simplement avec : date, lieu, température, ciel, humidité relative, pression, indice UV.\n- Ne montre jamais de JSON brut à l’utilisateur.\n\n⚠️ Chaque fois que tu donnes une réponse météo, tu dois aussi appeler l’outil Google Sheets pour enregistrer immédiatement les données (1 ville = 1 ligne dans le tableau).\n\n\n \n- Tu peux aussi utiliser l’outil Google Sheets Get Row pour consulter les données existantes dans le tableau.\n- Si l’utilisateur te demande ce qu’il y a déjà dans le tableau, appelle Get Row et renvoie-lui les informations sous forme de phrase lisible.\n- Exemple : \"Le tableau contient : 20/08/2025 à Avignon, 20°C, ciel nuageux, humidité 60 %, pression 1015 hPa, UV 3.\"\n\nTu disposes aussi d’un outil Gmail pour envoyer des emails.\n\n- Si l’utilisateur te demande d’envoyer un message par email, utilise Gmail.\n- Renseigne :\n  - \"To\" : l’adresse email du destinataire.\n  - \"Subject\" : un sujet simple et clair.\n  - \"Body\" : le texte du message, en langage naturel.\n- Si les données météo doivent être envoyées, récupère-les d’abord depuis le tableau Google Sheets ou WeatherAPI, puis compose l’email avec ces informations.\n- Exemple :\n  Sujet : Météo d’Avignon\n  Corps : \"Voici la météo d’Avignon du 20/08/2025 : 20°C, ciel nuageux, humidité 62 %, pression 1018 hPa, UV 2.\"\n- Confirme toujours à l’utilisateur que l’email a été envoyé.\n\n\n\nRègles générales :\n- Si l’utilisateur ne demande rien de particulier, réponds poliment quand même.\n  - \"Merci\" → \"Avec plaisir 😊 !\"\n  - \"Tu es super\" → \"Merci, c’est gentil de le dire !\"\n  - \"Salut\" → \"Bonjour ! Je suis là si tu veux savoir le temps qu’il fait quelque part.\"\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -144,
+        -96
+      ],
+      "id": "f268f554-1cd8-4e7f-ad0a-6bd1d2fb031a",
+      "name": "Agent_IA"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "17af8385-857f-439a-aebf-b051f82a6873",
+              "name": "body.sessionId",
+              "value": "={{ $json.body.sessionId }}",
+              "type": "string"
+            },
+            {
+              "id": "be5af627-8ac2-4304-a510-0282b4276c49",
+              "name": "body.message",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -416,
+        -96
+      ],
+      "id": "3958543e-6467-4154-b7f4-08ed87dd330b",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agent_IA",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent_IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Moteur_LLM_ici_GPT4_mini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agent_IA",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get_row ": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent_IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append_row ": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent_IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envoyer_un_Mail": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agent_IA",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agent_IA": {
+      "main": [
+        [
+          {
+            "node": "Parsing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Agent_IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "a04ada95-176a-45a2-93b5-2dd8bb9043e4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "779524e63dbde32a73cbf739cde16780b056dc31072ff92c4fdba4f2d62e9ee8"
+  },
+  "id": "O7tKjbo4T8R4NWak",
+  "tags": []
+}
