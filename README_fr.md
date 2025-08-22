@@ -36,7 +36,7 @@ L’agent est guidé par un **prompt système** et conserve une mémoire à cour
 
 ### Limites
 - Le nœud Agent IA **ignore parfois les consignes** et calcule lui-même au lieu d’utiliser des formules déterministes.  
-- Les sorties JSON peuvent être incohérentes et difficiles à mapper, rendant problématiques leur utilisations dans des outils de code.  
+- Les sorties JSON peuvent être incohérentes et difficiles à mapper, rendant problématiques leur utilisations dans des outils de code, justifiant de laisser le modèle calculer avec les poids.  
 - L’Humidex et le Windchill ne sont **pas garantis déterministes** dans ce workflow.  
 
 ### Fichiers (Workflow_Agent/)
