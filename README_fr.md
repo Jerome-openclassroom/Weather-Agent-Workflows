@@ -10,6 +10,10 @@
 Inclut des calculs déterministes d’**Humidex** et de **Windchill**, une **intégration Google Sheets**, et l’**envoi de bulletins météo par email**.  
 
 Chaque section ci-dessous est rédigée comme un mini README autonome.
+
+> ⚠️ Les clés API et les URL de webhook ont été supprimées pour des raisons de sécurité.  
+> Veuillez les remplacer par vos propres valeurs afin de pouvoir reproduire les workflows.
+
 ---
 
 ## 1. Workflow avec le nœud Agent IA
