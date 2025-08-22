@@ -104,6 +104,17 @@ The Assistant uses the **Code Interpreter tool** and deterministic Python script
 
 ```
 
+
+## Scope & Limitations
+
+The critical factor is not the **agent type** but the **calculation method**:
+
+- For **90% of office automation and public-facing scenarios** (tourism, outdoor activities, weather services), approximate results computed with model weights are acceptable. Small deviations (e.g., Humidex 41.0°C instead of 41.2°C, or Windchill –3.2°C instead of –3.5°C) have **no practical impact**.  
+
+- For **critical scientific, medical, or industrial contexts**, such as calculating an **IV drug dosage with a narrow therapeutic window**, results obtained with model weights are **unsafe**. In such cases, deterministic and traceable calculations (e.g., via Python scripts in the Code Interpreter) are **mandatory**.  
+
+Thus, both **AI Agent Node** and **Assistant with Code Interpreter** are agents by design, but their reliability depends on whether the task relies on model-based approximations or deterministic computations.
+
 ---
 
 ## Conclusion
@@ -114,6 +125,7 @@ This repository illustrates the difference between two approaches to agent desig
 - **Assistant with Code Interpreter → deterministic and explainable, better suited for scientific or reproducibility-critical workflows.
 
 Both are *agents by definition* (they combine memory, tools, and reasoning), even if only one is explicitly called an "Agent" in n8n.
+
 
 ---
 
