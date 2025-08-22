@@ -61,8 +61,8 @@ The Assistant uses the **Code Interpreter tool** and deterministic Python script
   - `humidex_calc_simple.py`
   - `windchill_calc_simple.py`
 - Assistant retrieves data from Google Sheets and Weather API.
-- Responses always include **step-by-step calculations** with variables shown.
-- Stable JSON outputs, directly mappable in n8n.
+- Responses can include **step-by-step calculations** with variables shown (on demand).
+- Possibility of stable JSON outputs, directly usable in n8n (via Model configuration → Response format in the OpenAI Platform interface).
 - Demo conversations included (`Demo_calculs.md`).
 
 ### Advantages
