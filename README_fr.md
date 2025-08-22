@@ -104,6 +104,16 @@ L’assistant utilise l’outil **Code Interpreter** et des scripts Python déte
 
 ```
 
+## Portée & Limites
+
+Le point critique n’est pas le **type d’agent** mais la **méthode de calcul** :
+
+- Pour **90 % des scénarios bureautiques ou grand public** (tourisme, activités extérieures, services météo grand public), des résultats approximatifs issus des poids du modèle sont acceptables. De petites différences (ex. Humidex 41,0 °C au lieu de 41,2 °C, ou Windchill –3,2 °C au lieu de –3,5 °C) n’ont **aucune conséquence pratique**.  
+
+- Pour des **contextes scientifiques, médicaux ou industriels critiques**, comme le calcul d’un **dosage IV avec une marge thérapeutique étroite**, des résultats obtenus avec les poids du modèle sont **dangereux**. Dans ces cas, des calculs déterministes et traçables (ex. via scripts Python dans le Code Interpreter) sont **indispensables**.  
+
+Ainsi, le **nœud Agent IA** et l’**Assistant avec Code Interpreter** sont bien tous deux des agents ; leur pertinence dépend uniquement du recours à une approximation par les poids ou à un calcul déterministe.
+
 ---
 
 ## Conclusion
