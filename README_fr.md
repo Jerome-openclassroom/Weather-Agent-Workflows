@@ -1,9 +1,7 @@
 # Workflows d’Agents Météo 🌦️🤖
 
-[![Made with n8n](https://img.shields.io/badge/Fabriqué%20avec-n8n-1abc9c?logo=n8n&logoColor=white)](https://n8n.io)  
-[![OpenAI](https://img.shields.io/badge/OpenAI-Assistant%20%26%20Code%20Interpreter-412991?logo=openai)](https://platform.openai.com/)  
-[![License: MIT](https://img.shields.io/badge/Licence-MIT-blue.svg)](LICENSE)  
-[![Dernier commit](https://img.shields.io/github/last-commit/USERNAME/REPO)](https://github.com/USERNAME/REPO)  
+[![Made with n8n](https://img.shields.io/badge/Fabriqué%20avec-n8n-1abc9c?logo=n8n&logoColor=white)](https://n8n.io)  [![OpenAI](https://img.shields.io/badge/OpenAI-Assistant%20%26%20Code%20Interpreter-412991?logo=openai)](https://platform.openai.com/)  [![License: MIT](https://img.shields.io/badge/Licence-MIT-blue.svg)](LICENSE)  
+
 
 🚀 Ce dépôt compare deux implémentations de chatbots météo dans **n8n** :  
 - avec le **nœud Agent IA**  (implémentation agentique native de n8n)  
